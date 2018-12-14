@@ -9,23 +9,23 @@ using namespace std;
 int main()
 {
 	MPQ<int> MPQF; // MPQ First
-	ifstream reader ("input.txt");
+	ifstream reader ("input.txt"); // for read input.txt
 	string line="";
-	getline(reader,line);
-	int buildingNumber = atoi(line.c_str());
+	getline(reader,line); // first line building num.
+	int buildingNumber = atoi(line.c_str()); 
 	int xCordL=0;
 	int height=0;
 	int xCordR=0;
 	int counter = 1;
 	while(getline(reader,line))
-	{
-		istringstream ss(line);
-		ss >> xCordL;
+	{ // getting all information to heap!
+		istringstream ss(line); // divide as this! 
+		ss >> xCordL; 
 		ss >> height ;
 		ss >> xCordR ;
-		MPQF.insert(xCordL,counter, LEFT,height);
-		MPQF.insert(xCordR,counter, RIGHT,height);
-		counter++;
+		MPQF.insert(xCordL,counter, LEFT,height); // insert left first 
+		MPQF.insert(xCordR,counter, RIGHT,height); // then right one 
+		counter++ // counter is just for label
 	}
 	MPQF.heapSort(MPQF.arrayElementGetter()); // To sort heap! ascending order.
 	MPQ<int> MPQC;//MPQ Comparison
